@@ -1,7 +1,7 @@
 var capture;
 var imgArray = [];
 var page = 0;
-var maxpage = 13;
+var maxpage = 14;
 var input;
 inputShow = false;
 polaroid = 0
@@ -44,7 +44,7 @@ function draw() {
     }
 
     // on slide 13, ask for input and save a picture
-    if (i==12){
+    if (i==14){
           inputShow = true;
           image(capture, 60, 60); 
           image(imgArray[i], 0, 0); //this places the image on top, don't ask my why it has to be done this way       
@@ -62,7 +62,7 @@ function draw() {
           text(question, 100, 580) // was 130 700
           pop();
     }
-    if ( i != 12 && inputShow) {
+    if ( i != 14 && inputShow) {
       input.hide();
       button.hide();
       inputShow = false;
@@ -96,7 +96,6 @@ function keyPressed() {
 }
 
 function savefile() {
-  page++;
   showtext = true;
     if (showtext) {           // writes the text, because input box gets hidden
       textSize(24);
@@ -108,6 +107,10 @@ function savefile() {
   polaroid ++;
   loadQuestion();
   input.value('')
+  page++;
+    if (page == (maxpage+1)) {
+    page =0;
+    }
   showtext = false;
   return false;
 }
